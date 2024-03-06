@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title of the page</title>
+  <script src="email.js" defer></script>
+</head>
+<body class="body-element">
+  <h1 class="color-red"> introduction to DOM Manipulation</h1>
+  <div class="tabs">
+    <h3 onclick="showTab('form')">Form</h3>
+    <h3 onclick="showTab('secction')">Sections</h3>
+    <h3 onclick="showTab('dummy')">Dummy</h3>
+  </div>
+  <form id="emailForm">
+    <label for="to">To:</label>
+    <input type="email" id="to" name="to" required><br><br>
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" required><br><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+    <button type="submit">Send Email</button>
+  </form>
+  <div id="response"></div>
+  <section class="parent">
+    <h2 id="section-1-header" class="section-header color-red">section 1</h2>
+    <p> all like doing in the software company</p>
+  </section>
+  <section>
+    <h2 id="section-1-header" class="section-header">section 2</h2>
+    <p> civil student like doing the software jobs</p>
+  </section>
+  <section>
+    <h2 class="section-header">section 3</h2>
+    <p> now software company is most famous</p>
+  </section>
+</body>
+</html>

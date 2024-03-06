@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>title the page</title>
+</head>
+<body>
+    <h1> Introduction of DOM Manipulation</h1>
+
+<div id="links-container">
+        <!-- Links will be dynamically added here -->
+
+</div>
+
+<script>
+// Function to create a link element
+function createLink(text, url) {
+    var link = document.createElement("a");
+    link.textContent = text;
+    link.style.display = "block"; // Display links vertically
+    if (url.startsWith("mailto:")) {
+        link.href = "#";
+        link.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            var confirmEmail = confirm("Are you sure you want to send an email?");
+            if (confirmEmail) {
+                window.location.href = url; // Redirect to mailto link if confirmed
+            }
+        });
+    } else {
+        link.href = url;
+    }
+    return link;
+}
+
+// Create links
+var BoxLink= createLink("Box", "threebox.html");
+var emailLink= createLink("Email", "email.html");
+var classLink = createLink("Class", "basics.html"); // Placeholder link, replace "#" with actual URL or function
+
+// Append links to the container
+var linksContainer = document.getElementById("links-container");
+linksContainer.appendChild(BoxLink);
+linksContainer.appendChild(emailLink);
+linksContainer.appendChild(classLink);
+
+// Example of event listener for the class link
+classLink.addEventListener("click", function(event) {
+    // Your code to handle the click event for the class link goes here
+    console.log("Clicked on the class link!");
+    // For demonstration, let's change the link color when clicked
+    classLink.style.color = "red";
+});
+</script>
+
+</body>
+</html>

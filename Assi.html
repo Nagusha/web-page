@@ -2,11 +2,50 @@
 <html>
   <head>
     <title> page Title</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+        }
+        #timer {
+          font-size: 36px;
+          margin-top: 50px;
+        }
+      </style>
 
     <h1 style="text-align:center;"> Welcome to Everest Engineering</h1>  
 
   </head>
 <body style="background-color: aliceblue;">
+    <div id="timer">00:00:00</div>
+<script>
+  function countdown(durationInSeconds) {
+    let timerDisplay = document.getElementById('timer');
+    let endTime = new Date().getTime() + (durationInSeconds * 1000);
+
+    let timer = setInterval(function() {
+      let now = new Date().getTime();
+      let distance = endTime - now;
+
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      hours = (hours < 10) ? "0" + hours : hours;
+      minutes = (minutes < 10) ? "0" + minutes : minutes;
+      seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+      timerDisplay.textContent = hours + ":" + minutes + ":" + seconds;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        timerDisplay.textContent = "Countdown complete!";
+      }
+    }, 1000);
+  }
+
+  countdown(60); // Countdown for 60 seconds
+</script>
    
 <div class="email-container" id="email-container">
     
@@ -44,9 +83,8 @@
         document.body.style.backgroundColor = 'light green';
 
     }
-</script>
+   </script>
+   </body>
+   </html>
 
-
-</body>
-</html>
 

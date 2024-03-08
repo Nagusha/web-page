@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>title the page</title>
+<div id="links-container">
+        <!-- Links will be dynamically added here -->
+</head>
+<body>
+    <h1> Introduction to manipulation</h1>
+    <div id="clock"></div>
+    <button onclick="changeInterval()">Change Interval</button>
+
+    <script>
+        let intervalId;
+        let updateInterval = 1000; // Default interval is 1 second
+
+        function updateTime() {
+            // Get current time
+            let currentTime = new Date();
+
+            // Extract hours, minutes, and seconds
+            let hours = currentTime.getHours();
+            let minutes = currentTime.getMinutes();
+            let seconds = currentTime.getSeconds();
+
+            // Add leading zero if single digit
+            hours = (hours < 10) ? '0' + hours : hours;
+            minutes = (minutes < 10) ? '0' + minutes : minutes;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+            // Display the time
+            document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Function to start the interval
+        function startInterval() {
+            clearInterval(intervalId); // Clear any existing interval
+            intervalId = setInterval(updateTime, updateInterval);
+        }
+
+        // Function to change the interval
+        function changeInterval() {
+            let newInterval = parseInt(prompt("Enter the new interval (in milliseconds):"));
+            if (!isNaN(newInterval) && newInterval > 0) {
+                updateInterval = newInterval;
+                startInterval();
+            } else {
+                alert("Please enter a valid positive number.");
+            }
+        }
+
+        // Call updateTime function immediately and start the interval
+        updateTime();
+        startInterval();
+    </script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+    
+            #clock {
+                font-size: 3rem;
+                padding: 20px;
+                background-color: #fff;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+    
+            button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>    
+    
+<script>
+function createLink(text, url) {
+    var link = document.createElement("a");
+    link.textContent = text;
+    link.style.display = "block";
+    if (url.startsWith("emailto:")) {
+        link.href = "#";
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            var confirmBox = confirm("Are you sure you want to send an email?");
+            if (confirmBox) {
+                window.location.href = url; 
+            }
+        });
+    } else {
+        link.href = url;
+    }
+    return link;
+}
+
+var emailLink= createLink("Email", "email.html");
+var BoxLink= createLink("Box", "threebox.html");
+var classLink = createLink("class", "basics.html");
+
+var linksContainer = document.getElementById("links-container");
+linksContainer.appendChild(emailLink);
+linksContainer.appendChild(BoxLink);
+linksContainer.appendChild(classLink);
+
+lassLink.addEventListener("click", function(event) {
+    console.log("Clicked on the class link!");
+    classLink.style.color = "Yellow";
+});
+</script>
+
+</body>
+</html>

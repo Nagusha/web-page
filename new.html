@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabbed Links</title>
+<style>
+  /* Basic styling for tabs */
+  .tab {
+    display: none;
+  }
+  .active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="tabContainer">
+    <h2>  Welcome to Everest Engineering</h2>
+  <button onclick="openTab(event, 'tab1')">Tab 1</button>
+  <button onclick="openTab(event, 'tab2')">Tab 2</button>
+  <button onclick="openTab(event, 'tab3')">Tab 3</button>
+</div>
+
+<div id="tab1" class="tab active">
+  <button onclick="openLink('email.html')">Open Link 1</button>
+</div>
+
+<div id="tab2" class="tab">
+  <button onclick="openLink('threebox.html')">Open Link 2</button>
+</div>
+
+<div id="tab3" class="tab">
+  <button onclick="openLink('basics.html')">Open Link 3</button>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  // Hide all tabs
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = "none";
+  }
+
+  // Show the selected tab
+  document.getElementById(tabName).style.display = "block";
+
+  // Remove 'active' class from all buttons
+  var tabButtons = document.getElementsByTagName("button");
+  for (var i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove("active");
+  }
+
+  // Add 'active' class to the clicked button
+  evt.currentTarget.classList.add("active");
+}
+
+function openLink(url) {
+  // Open link in a new tab
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>

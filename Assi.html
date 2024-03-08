@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> page Title</title>
+
+    <h1 style="text-align:center;"> Welcome to Everest Engineering</h1>  
+
+  </head>
+<body style="background-color: aliceblue;">
+   
+<div class="email-container" id="email-container">
+    
+
+    <button onclick="openEmailProgram()">Email </button>
+    <button onclick="openBoxProgram()">Box </button>
+    <button onclick="openClassProgram()">Class </button>
+    <button onclick="openTableProgram()">Table </button>
+    <div id="email-content" style="display: none;">
+    </div>
+
+</div>
+
+<script>
+    function openEmailProgram() {
+        window.open('email.html');
+        document.body.style.backgroundColor = 'light yellow';
+    }
+
+    function openBoxProgram() {
+        window.open('threebox.html');
+        document.body.style.backgroundColor = 'light orange';
+        
+    }
+
+    
+    function openClassProgram() {
+        window.open('basics.html');
+        document.body.style.backgroundColor = 'light green';
+
+    }
+
+    function openTableProgram() {
+        window.open('table.html');
+        document.body.style.backgroundColor = 'light green';
+
+    }
+</script>
+
+
+</body>
+</html>
+

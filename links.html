@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>page of title </title></title>
+</head>
+<body>
+    <h2> Introduction of manipulation </h2>
+    <div id="Container">
+        <p id = "hour-label" class =  "label"> Hours</p> <p id = "min-label" class =  "label"> Minutes</p> <p id = "p1" class = "semicolon"> :</p> <input id="sec" type="number" max="60" min="0" value="0" class="times">
+        <button id = "start" class="btn"> start</button>
+        <button id = "reset" class="btn"> reset</button>
+
+
+    </div>
+
+<div id="links-container">
+    <!-- Links will be dynamically added here -->
+</div>
+
+<script>
+function createLink(text, url) {
+    var link = document.createElement("a");
+    link.textContent = text;
+    link.style.display = "block"; 
+    if (url.startsWith("mailto:")) {
+        link.href = "basicsss.html";
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            var confirmEmail = confirm("Are you sure you want to send an email?");
+            if (confirmEmail) {
+                window.location.href = url;
+            }
+        });
+    } else {
+        link.href = url;
+    }
+    return link;
+}
+
+var boxLink = createLink("Box", "threebox.html");
+var emailLink = createLink("Email", "email.html"); 
+var classLink = createLink("Class", "basics.html"); 
+var linksContainer = document.getElementById("links-container");
+linksContainer.appendChild(boxLink); 
+linksContainer.appendChild(emailLink); 
+linksContainer.appendChild(classLink);
+
+classLink.addEventListener("click", function(event) {
+    console.log("Clicked on the class link!");
+    classLink.style.color = "red";
+});
+</script>
+
+</body>
+</html>

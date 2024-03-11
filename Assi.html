@@ -3,6 +3,16 @@
   <head>
     <title> page Title</title>
     <style>
+      /* Add some basic styling */
+      #container {
+        margin: 50px auto;
+        text-align: center;
+      }
+      .item {
+        margin-bottom: 10px;
+      }
+    </style>
+    <style>
         body {
           font-family: Arial, sans-serif;
           text-align: center;
@@ -67,6 +77,14 @@
     <button onclick="openTableProgram()">Table </button>
     <div id="email-content" style="display: none;">
     </div>
+
+    <div id="container">
+      <div class="item">Nagusha<button class="delete-btn">Delete</button></div>
+      <div class="item">Ajay <button class="delete-btn">Delete</button></div>
+      <div class="item">Vijay <button class="delete-btn">Delete</button></div>
+      <div class="item">Devashi <button class="delete-btn">Delete</button></div>
+    
+    </div>
     
 
 </div>
@@ -97,7 +115,17 @@
     }
   
    </script>
-   </body>
+   <script>
+    // Add event listener to all delete buttons
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove the parent element (the whole item) when the button is clicked
+        this.parentNode.remove();
+      });
+    });
+    </script>
+    </body>
    </html>
 
 

@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.tabs {
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  min-height: 200px;
+}

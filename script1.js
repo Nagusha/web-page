@@ -1,36 +1,51 @@
-// Function to load content based on tab click
-function loadContent(tabName) {
-  let content = '';
 
-  switch(tabName) {
-    case 'home':
-      content = 'Welcome to the Home Page!';
-      break;
-    case 'services':
-      content = 'Check out our Services here!';
-      break;
-    case 'email':
-      content = 'Access your Email here!';
-      break;
-    default:
-      content = 'Welcome!';
-  }
+    
+    let items = [];
 
-  document.getElementById('content').innerHTML = content;
-}
+    function renderItems() {
+      const totalItems = document.getElementById('total-items');
+      totalItems.textContent = items.length;
 
-// Event listeners for tab clicks
-document.getElementById('homeTab').addEventListener('click', function() {
-  loadContent('home');
-});
+      const markedItems = document.getElementById('marked-items');
+      const markedCount = items.filter(item => item.marked).length;
+      markedItems.textContent = markedCount;
 
-document.getElementById('servicesTab').addEventListener('click', function() {
-  loadContent('services');
-});
+      const unmarkedItems = document.getElementById('unmarked-items');
+      const unmarkedCount = items.filter(item => !item.marked).length;
+      unmarkedItems.textContent = unmarkedCount;
 
-document.getElementById('emailTab').addEventListener('click', function() {
-  loadContent('email');
-});
+      const itemList = document.getElementById('items');
+      itemList.innerHTML = '';
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        if (item.marked) {
+          li.classList.add('marked');
+        }
+        li.addEventListener('click', () => {
+          item.marked = !item.marked;
+          renderItems();
+        });
+        itemList.appendChild(li);
+      });
+      const closeButton = document.createElement('button');
+        closeButton.textContent = 'X';
+        closeButton.addEventListener('click', () => {
+          items.splice(index, 1);
+          renderItems();
+        });
+        li.appendChild(closeButton);
+        itemList.appendChild(li);
+      };
 
-// Load default content
-loadContent('home');
+    function addItem() {
+      const itemNameInput = document.getElementById('item');
+      const itemName = itemNameInput.value.trim();
+      if (itemName !== '') {
+        items.push({ name: itemName, marked: false });
+        itemNameInput.value = '';
+        renderItems();
+      }
+    }
+
+    renderItems();

@@ -3,78 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browser Navigation</title>
-  <style>
-    body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .tabs {
-    margin-bottom: 20px;
-  }
-  
-  .tabs button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  
-  #content {
-    padding: 20px;
-    border: 1px solid #ccc;
-    min-height: 200px;
-  }
-  </style>
+  <title>title page</title>
+  <link rel="stylesheet" href="styles1.css">
 </head>
-<body style="background-color: aliceblue;">
-  <h3>Welcome EverestEngineering</h3>
-  <div class="tabs">
-    <button id="HomeTab">Home</button>
-    <button id="ServicesTab">Services</button>
-    <button id="TeamsTab">Teams</button>
-  </div>
-  <div id="content">
-    <!-- Content will be dynamically loaded here -->
-  </div>
-  <script>
-    // Function to load content based on tab click
-function loadContent(tabName) {
-    let content = '';
-  
-    switch(tabName) {
-      case 'Home':
-        content = 'Welcome to the Home Page! A bold, people first community, building digital products for those who do things';
-        break;
-      case 'Services':
-        content = 'Check out our Services here! Starting by understanding that we are different, and that makes us better.  That is why collaboration is at the core of how we think and approach products, processes and principles, without forgetting to have some fun in the way.';
-        break;
-      case 'Teams':
-        content = 'Meet our Teams! Starting by understanding that we are different, and that makes us better.  That is why collaboration is at the core of how we think and approach products, processes and principles, without forgetting to have some fun in the way.';
-        break;
-      default:
-        content = 'Welcome!';
-    }
-  
-    document.getElementById('content').innerHTML = content;
-  }
-  
-  // Event listeners for tab clicks
-  document.getElementById('HomeTab').addEventListener('click', function() {
-    loadContent('Home');
-  });
-  
-  document.getElementById('ServicesTab').addEventListener('click', function() {
-    loadContent('Services');
-  });
-  
-  document.getElementById('TeamsTab').addEventListener('click', function() {
-    loadContent('Teams');
-  });
-  
-  // Load default content
-  loadContent('Home');
-  
+<body>
+  <div class="hello">
+    <div id="myDIV" class="header">
+      <h1 style="margin:5px">Shopping List</h1>
+      <input type="text" id="myInput" placeholder="Title...">
+      <span onclick="newElement()" class="addBtn">Add</span>
+    </div>
+    
+    <ul id="myUL">
+      
+    </ul>
+    <div>
+      <button>Total items: <span id="total-items">0</span></button>
+      <button>Marked items: <span id="marked-items">0</span></button>
+      <button>UnMarked items: <span id="marked-items">0</span></button>
 
-  </script>
+    </div>
+   
+  </div>
+  <script src="script1.js"></script>
 </body>
 </html>

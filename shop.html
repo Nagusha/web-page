@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping List</title>
+<style>
+  .marked {
+    text-decoration: line-through;
+  }
+  body {
+    margin: 0;
+    min-width: 250px;
+    background-color: lightpink;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: white;
+    box-shadow: 0 0 30px silver;
+    font-size: 18px;
+    transition: 0.2s;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  ul li:nth-child(odd) {
+    background: #f9f9f9;
+  }
+  
+  ul li:hover {
+    background: rgb(130, 236, 130);
+  }
+  
+  ul.checked {
+    background-color: rgb(129, 234, 129);
+    text-decoration: line-through;
+  }
+  
+  ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+  }
+  
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+  }
+  
+  .header {
+    background-color: #aee9f9;
+    padding: 30px 40px;
+    color: greenyellow;
+    text-align: center;
+  }
+  
+  .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  
+  .addBtn {
+    padding: 10px;
+    width: 35%;
+    background: #47c945;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+  
+  .hello{
+      width: 60vw;
+    height: 100vh;
+    margin: 25vh auto;
+  }
+  h1{
+      color: red;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #ea4ecb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:add{
+    background-color: #47c945;
+}
+button:hover {
+    background-color: #a5de3c;
+}
+.marked {
+  text-decoration: line-through;
+}
+
+</style>
+</head>
+<body>
+  
+  <div class="hello">
+    <div id="myDIV" class="header">
+      <h1 style="margin:5px">Shopping List</h1>
+      <form id="shopping-list-form">
+        <input type="text" id="item" placeholder="Enter item">
+        <button type="button" onclick="addItem()">Add</button>
+        </button>
+
+      </form>
+      
+    </div>
+    
+    <ul id="items">
+      
+    </ul>
+    <div>
+    <button>Total items: <span id="total-items">0</span></button>
+    <button>Marked items: <span id="marked-items">0</span></button>
+    <button>Unmarked items: <span id="unmarked-items">0</span></button>
+    </div>
+  <script>
+
+    let items = [];
+
+    function renderItems() {
+      const totalItems = document.getElementById('total-items');
+      totalItems.textContent = items.length;
+
+      const markedItems = document.getElementById('marked-items');
+      const markedCount = items.filter(item => item.marked).length;
+      markedItems.textContent = markedCount;
+
+      const unmarkedItems = document.getElementById('unmarked-items');
+      const unmarkedCount = items.filter(item => !item.marked).length;
+      unmarkedItems.textContent = unmarkedCount;
+
+      const itemList = document.getElementById('items');
+      itemList.innerHTML = '';
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        if (item.marked) {
+          li.classList.add('marked');
+        }
+        li.addEventListener('click', () => {
+          item.marked = !item.marked;
+          renderItems();
+        });
+        itemList.appendChild(li);
+      });
+      const closeButton = document.createElement('button');
+        closeButton.textContent = 'X';
+        closeButton.addEventListener('click', () => {
+          items.splice(index, 1);
+          renderItems();
+        });
+        li.appendChild(closeButton);
+        itemList.appendChild(li);
+      };
+
+    function addItem() {
+      const itemNameInput = document.getElementById('item');
+      const itemName = itemNameInput.value.trim();
+      if (itemName !== '') {
+        items.push({ name: itemName, marked: false });
+        itemNameInput.value = '';
+        renderItems();
+      }
+    }
+
+    renderItems();
+
+
+  </script>
+</body>
+</html>
